@@ -139,7 +139,7 @@ namespace billingSystemGUI {
 	private: System::Void MenuForm_Load(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void MenuForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		Application::Exit();
+		//	Application::Exit();
 	}
 
 	};

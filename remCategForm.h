@@ -158,7 +158,7 @@ namespace billingSystemGUI {
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void comboBox1_TextChanged(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void remCategForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		Application::Exit();
+		//	Application::Exit();
 	}
 	};
 }

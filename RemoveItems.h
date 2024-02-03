@@ -203,7 +203,7 @@ namespace billingSystemGUI {
 	private: System::Void comboBox2_TextChanged(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void RemoveItems_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 
-		Application::Exit();
+		//Application::Exit();
 	}
 	};
 }
