@@ -196,7 +196,7 @@ namespace billingSystemGUI {
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void menuManager_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		//	Application::Exit();
+		//Application::Exit();
 	}
 	};
 }

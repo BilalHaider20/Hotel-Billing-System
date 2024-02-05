@@ -5,8 +5,6 @@ using namespace System::Windows::Forms;
 namespace billingSystemGUI
 {
 	System::Void remCategForm::button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		menuManager^ menumanage = gcnew menuManager(hotel);
-		menumanage->Show();
 		this->Close();
 	}
 

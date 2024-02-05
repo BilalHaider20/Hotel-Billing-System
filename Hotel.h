@@ -195,6 +195,7 @@ public:
 
 	void TakeOrder()
 	{
+		/*
 		system("cls");
 		cout << "\t\tFri-Chicks\n";
 		cout << ".............. Place Order .............\n\n";
@@ -204,6 +205,7 @@ public:
 			pressToContinue();
 			return;
 		}
+		*/
 
 		ProductsList* cart = new ProductsList();
 		ProductsList* temp = NULL;
