@@ -5,7 +5,10 @@
 #include <ctime>
 #include <chrono>
 #include "productsList.h"
+#include "msclr/marshal_cppstd.h"
+
 using namespace std;
+using namespace System;
 
 class Order
 {
@@ -108,6 +111,8 @@ public:
 
 	string print2()
 	{
+		String^ Bill = getBill().ToString();
+		string bill = msclr::interop::marshal_as<string>(Bill);
 		string output;
 		output = "\r\n----------------------------------------------------------\r\n";
 		output += "Invoice Number: " + to_string(getInvoiceNumber()) + "\r\n";
@@ -115,7 +120,7 @@ public:
 		output += "Date and Time: " + dateTime;
 
 		output += "\r\nTotal Items Purchased: " + to_string(getTotalItems()) + "\r\n";
-		output += "Total Bill: Rs." + to_string(getBill()) + "\r\n";
+		output += "Total Bill: Rs." + bill + "\r\n";
 		output += "----------------------------------------------------------\r\n";
 		return output;
 	}
