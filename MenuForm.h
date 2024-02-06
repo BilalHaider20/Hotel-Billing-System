@@ -95,6 +95,8 @@ namespace billingSystemGUI {
 			// 
 			this->menuLabel->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->menuLabel->Cursor = System::Windows::Forms::Cursors::Default;
+			this->menuLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->menuLabel->ImeMode = System::Windows::Forms::ImeMode::Disable;
 			this->menuLabel->Location = System::Drawing::Point(43, 52);
 			this->menuLabel->Multiline = true;
@@ -107,6 +109,8 @@ namespace billingSystemGUI {
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(42, 21);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(60, 20);

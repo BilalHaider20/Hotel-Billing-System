@@ -2,6 +2,7 @@
 #include "menuManager.h"
 #include "MenuForm.h"
 #include "AddCategoryForm.h"
+#include "Cart.h"
 
 using namespace System;
 using namespace billingSystemGUI;
@@ -26,24 +27,26 @@ namespace billingSystemGUI
 
 	System::Void MyForm::button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		menuManager^ menuManageForm = gcnew menuManager(hotel);
-		menuManageForm->Show();
-		this->Hide();
+		menuManageForm->ShowDialog();
 	}
+
 	System::Void MyForm::button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		//hotel->TakeOrder();
+		Cart^ cart = gcnew Cart(hotel);
+		cart->ShowDialog();
 	}
+
 	System::Void MyForm::button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		//hotel->BillingHistory();
 	}
+
 	System::Void MyForm::button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		//	hotel->View_Total_Sales();
 	}
+
 	System::Void MyForm::button5_Click(System::Object^ sender, System::EventArgs^ e) {
 		hotel->refreshData();
 		MessageBox::Show("Data Loaded Successfully!", "Message");
 	}
 	System::Void MyForm::button6_Click(System::Object^ sender, System::EventArgs^ e) {
-		Application::Exit();
+		this->Close();
 	}
 }
 

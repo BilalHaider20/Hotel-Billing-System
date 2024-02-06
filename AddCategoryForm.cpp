@@ -5,8 +5,6 @@ using namespace System::Windows::Forms;
 namespace billingSystemGUI
 {
 	System::Void AddCategoryForm::button6_Click(System::Object^ sender, System::EventArgs^ e) {
-		menuManager^ menumanage = gcnew menuManager(hotel);
-		menumanage->Show();
 		this->Close();
 	}
 	System::Void AddCategoryForm::button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -21,9 +19,9 @@ namespace billingSystemGUI
 			textBox1->Text = "";
 		}
 		if (textBox1->Text != "")
-					button2->Enabled = true;
+			button2->Enabled = true;
 		else
-					button2->Enabled = false;
+			button2->Enabled = false;
 
 
 	}

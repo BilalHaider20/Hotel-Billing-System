@@ -34,8 +34,6 @@ namespace billingSystemGUI {
 			{
 				delete components;
 			}
-			hotel->exit();
-			delete hotel;
 		}
 
 
@@ -193,7 +191,8 @@ namespace billingSystemGUI {
 	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		Application::Exit();
+		hotel->exit();
+		delete hotel;
 	}
 	};
 }

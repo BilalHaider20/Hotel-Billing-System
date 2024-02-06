@@ -40,6 +40,10 @@ public:
 
 	~ProductsList()
 	{
+		emptyList();
+	}
+
+	void emptyList() {
 		while (head != nullptr)
 		{
 			Node<Product>* temp = head;
@@ -48,6 +52,7 @@ public:
 			temp = nullptr;
 		}
 		tail = nullptr;
+		size = 0;
 	}
 
 	int getSize() const

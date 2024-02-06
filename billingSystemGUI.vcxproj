@@ -121,15 +121,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddItems.cpp" />
+    <ClCompile Include="Cart.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="menuManager.cpp" />
     <ClCompile Include="MenuForm.cpp" />
     <ClCompile Include="AddCategoryForm.cpp" />
     <ClCompile Include="RemoveItems.cpp" />
     <ClCompile Include="remCategForm.cpp" />
+    <ClCompile Include="takeOrderForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddItems.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Cart.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="categories.h" />
@@ -157,6 +162,9 @@
     <ClInclude Include="order.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="productsList.h" />
+    <ClInclude Include="takeOrderForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="history" />
@@ -168,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddItems.resx">
       <DependentUpon>AddItems.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cart.resx">
+      <DependentUpon>Cart.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RemoveItems.resx">
       <DependentUpon>RemoveItems.h</DependentUpon>
@@ -183,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="remCategForm.resx">
       <DependentUpon>remCategForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="takeOrderForm.resx">
+      <DependentUpon>takeOrderForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
