@@ -28,9 +28,9 @@ namespace billingSystemGUI
 	System::Void Cart::button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		int prodIndex = listView1->SelectedIndices[0] + 1;
 		hotel->removeItemsFromCart(prodIndex);
-		MessageBox::Show("Item Removed from Cart Successfully!", "Message");
 		loadCart();
 		label3->Text = "Rs. " + hotel->GenerateBill().ToString();
+		MessageBox::Show("Item Removed from Cart Successfully!", "Message");
 		button2->Enabled = false;
 	}
 
@@ -40,9 +40,9 @@ namespace billingSystemGUI
 		}
 		else {
 			hotel->emptyCart();
-			MessageBox::Show("Successfully Emptied the Cart!", "Message");
 			loadCart();
 			label3->Text = "Rs. " + hotel->GenerateBill().ToString();
+			MessageBox::Show("Successfully Emptied the Cart!", "Message");
 			button2->Enabled = false;
 		}
 	}
