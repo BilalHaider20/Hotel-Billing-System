@@ -14,6 +14,7 @@ namespace billingSystemGUI
 		hotel->takeOrder();
 		label5->Text = "N/A";
 		label3->Text = "Rs. 0";
+		customerName = "N/A";
 	}
 
 	System::Void Cart::button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -54,8 +55,7 @@ namespace billingSystemGUI
 			MessageBox::Show("Select some items first before placing order", "Message");
 		}
 		else {
-			String^ Name = customerName;
-			string name = msclr::interop::marshal_as<string>(Name->ToString());
+			string name = msclr::interop::marshal_as<string>(customerName->ToString());
 			hotel->placeOrder(name);
 			MessageBox::Show("Your order has been placed!", "Message");
 			textBox1->Text = "";
