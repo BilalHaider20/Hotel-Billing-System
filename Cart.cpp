@@ -20,19 +20,17 @@ namespace billingSystemGUI
 	System::Void Cart::button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		takeOrderForm^ takeOrder = gcnew takeOrderForm(hotel);
 		takeOrder->ShowDialog();
-		listBox1->Items->Clear();
 		loadCart();
 		label3->Text = "Rs. " + hotel->GenerateBill().ToString();
 		button2->Enabled = false;
 	}
 
 	System::Void Cart::button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		int prodIndex = listBox1->SelectedIndex + 1;
+		int prodIndex = listView1->SelectedIndices[0] + 1;
 		hotel->removeItemsFromCart(prodIndex);
-		MessageBox::Show("Item Removed from Cart Successfully!", "Message");
-		listBox1->Items->Clear();
 		loadCart();
 		label3->Text = "Rs. " + hotel->GenerateBill().ToString();
+		MessageBox::Show("Item Removed from Cart Successfully!", "Message");
 		button2->Enabled = false;
 	}
 
@@ -42,10 +40,9 @@ namespace billingSystemGUI
 		}
 		else {
 			hotel->emptyCart();
-			MessageBox::Show("Successfully Emptied the Cart!", "Message");
-			listBox1->Items->Clear();
 			loadCart();
 			label3->Text = "Rs. " + hotel->GenerateBill().ToString();
+			MessageBox::Show("Successfully Emptied the Cart!", "Message");
 			button2->Enabled = false;
 		}
 	}
@@ -59,7 +56,6 @@ namespace billingSystemGUI
 			hotel->placeOrder(name);
 			MessageBox::Show("Your order has been placed!", "Message");
 			textBox1->Text = "";
-			listBox1->Items->Clear();
 			loadCart();
 			label5->Text = customerName;
 			label3->Text = "Rs. " + hotel->GenerateBill().ToString();
@@ -70,8 +66,8 @@ namespace billingSystemGUI
 	System::Void Cart::button6_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
-	System::Void Cart::listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		if (listBox1->SelectedIndex != -1) {
+	System::Void Cart::listView1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (listView1->SelectedIndices->Count > 0) {
 			button2->Enabled = true;
 		}
 		else

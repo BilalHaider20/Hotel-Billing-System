@@ -2,6 +2,7 @@
 #include "MyForm.h"
 #include "menuManager.h"
 
+
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -13,8 +14,7 @@ namespace billingSystemGUI
 
 	System::Void takeOrderForm::takeOrderForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		AddCategoriesToComboBox();
-		if (hotel != nullptr)
-			menuLabel->Text = gcnew String((hotel->getMenu().Display_menu()).c_str());
+		displayMenu();
 	}
 
 	System::Void takeOrderForm::button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -23,7 +23,6 @@ namespace billingSystemGUI
 		int prodIndex = comboBox2->SelectedIndex + 1;
 		hotel->addItemsToCart(categIndex, prodIndex);
 		MessageBox::Show("Item Added to Cart Successfully!", "Message");
-
 		button2->Enabled = false;
 		comboBox2->Items->Clear();
 		AddItemsToComboBox(categ);
