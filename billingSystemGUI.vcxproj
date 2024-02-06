@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddItems.cpp" />
+    <ClCompile Include="Billing_History.cpp" />
     <ClCompile Include="Cart.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="menuManager.cpp" />
@@ -132,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddItems.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Billing_History.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Cart.h">
@@ -176,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddItems.resx">
       <DependentUpon>AddItems.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing_History.resx">
+      <DependentUpon>Billing_History.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cart.resx">
       <DependentUpon>Cart.h</DependentUpon>

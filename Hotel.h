@@ -166,29 +166,33 @@ public:
 		inputFile.close();
 	}
 
-
-
-	void BillingHistory()
+	stack<Order> get_Order_Stack()
 	{
-		system("cls");
-		cout << "\t\tFri-Chicks\n";
-		cout << "............ Billing History ...........\n\n";
-		stack<Order> tempStack = orderStack;
+		return this->orderStack;
+	}
 
+	string BillingHistory()
+	{
+		//system("cls");
+		//cout << "\t\tFri-Chicks\n";
+		//cout << "............ Billing History ...........\n\n";
+		stack<Order> tempStack = orderStack;
+		string Output;
 		if (tempStack.empty())
 		{
-			cout << "No billing history available." << endl;
-			pressToContinue();
-			return;
+			return "\r\nNo billing history available.";
+			//pressToContinue();
+			//return;
 		}
 
 		while (!tempStack.empty())
 		{
 			Order currentOrder = tempStack.top();
-			currentOrder.print2();
+			Output= currentOrder.Print2();
 			tempStack.pop();
 		}
-		pressToContinue();
+		//pressToContinue();
+		return Output;
 	}
 
 

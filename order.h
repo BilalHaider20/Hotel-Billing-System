@@ -75,7 +75,7 @@ public:
 		return dateTime;
 	}
 
-	void print()
+	void Print_Orders()
 	{
 		system("CLS");
 		cout << "\t\tFri-Chicks\n";
@@ -106,16 +106,18 @@ public:
 		cout << "------------------------------------------\n";
 	}
 
-	void print2()
+	string Print2()
 	{
-		cout << "------------------------------------------\n";
-		cout << "Invoice Number: " << getInvoiceNumber() << endl;
-		cout << "Customer Name: " << getCustomerName() << endl;
-		cout << "Date and Time: " << dateTime;
+		string output;
+		
+		output = "\r\nInvoice Number: " + to_string(this->getInvoiceNumber());
+		output += "\r\nCustomer Name: " + this->getCustomerName() ;
+		output += "\r\nDate and Time: " + this->dateTime;
 
-		cout << "\nTotal Items Purchased: " << getTotalItems() << endl;
-		cout << "Total Bill: Rs." << getBill() << endl;
-		cout << "------------------------------------------\n";
+		output += "\r\n\nTotal Items Purchased: " + to_string(this->getTotalItems());
+		output += "\r\nTotal Bill: Rs."+ to_string(this->getBill());
+		output+= "\r\n------------------------------------------\n";
+		return output;
 	}
 };
 
