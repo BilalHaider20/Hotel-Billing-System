@@ -44,8 +44,15 @@ public:
 	menu getMenu() {
 		return menu1;
 	}
-
-	void saveHistory()
+	int Get_Total_Products_sold() const
+	{
+		return this->totalProductsSold;
+	}
+	double get_Total_Sales()
+	{
+		return this->totalSales;
+	}
+	void saveHistory() const
 	{
 		ofstream outputFile(HISTORY);
 
@@ -253,15 +260,6 @@ public:
 		totalProductsSold = totalpsold;
 	}
 
-	void View_Total_Sales()
-	{
-		system("cls");
-		cout << "\t\tFri-Chi cks\n";
-		cout << "............... Total Sales ..............\n\n";
-		cout << "Total Sales: Rs." << totalSales << endl;
-		cout << "Total Number of Products Sold: " << totalProductsSold << endl;
-		pressToContinue();
-	}
 
 	void refreshData() {
 		menu1.loadData();

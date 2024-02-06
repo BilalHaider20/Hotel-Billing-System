@@ -80,43 +80,12 @@ public:
 		return dateTime;
 	}
 
-	void Print_Orders()
-	{
-		system("CLS");
-		cout << "\t\tFri-Chicks\n";
-		cout << "................. Invoice ................\n\n";
-		cout << "------------------------------------------\n";
-		cout << "\nInvoice Number: " << getInvoiceNumber() << endl;
-		cout << "Customer Name: " << getCustomerName() << endl;
-		cout << "Date and Time: " << dateTime;
-
-		cout << "\n\nItems Purchased\n";
-		ProductsList* purchasedItems = GetPurchasedItems();
-
-		cout << "------------------------------------------\n";
-		cout << left << setw(5) << "Sr." << setw(25) << "Name"
-			<< "Price" << endl;
-		cout << "------------------------------------------\n";
-
-		for (int i = 1; i <= purchasedItems->getSize(); ++i)
-		{
-			Product product = purchasedItems->getProduct(i);
-			cout << setw(5) << i << setw(25) << product.getProduct_name() << "Rs. " << product.getProduct_price() << endl;
-		}
-		cout << "------------------------------------------\n";
-
-		cout << setw(30) << "Total Bill:"
-			<< "Rs. " << getBill() << endl;
-		cout << setw(30) << "Total Items Purchased: " << getTotalItems() << endl;
-		cout << "------------------------------------------\n";
-	}
-
 	string print2()
 	{
 		string output;
 		output = "\r\n----------------------------------------------------------\r\n";
-		output += "Invoice Number: " + to_string(getInvoiceNumber()) + "\r\n";
 		output += "Customer Name: " + getCustomerName() + "\r\n";
+		output += "Invoice Number: " + to_string(getInvoiceNumber()) + "\r\n";
 		output += "Date and Time: " + dateTime;
 
 		output += "\r\nTotal Items Purchased: " + to_string(getTotalItems()) + "\r\n";
