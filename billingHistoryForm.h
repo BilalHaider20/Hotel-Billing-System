@@ -110,14 +110,17 @@ namespace billingSystemGUI {
 			// 
 			// textBox1
 			// 
+			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBox1->Cursor = System::Windows::Forms::Cursors::Default;
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Calibri", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->textBox1->ForeColor = System::Drawing::SystemColors::MenuText;
 			this->textBox1->ImeMode = System::Windows::Forms::ImeMode::Disable;
 			this->textBox1->Location = System::Drawing::Point(43, 50);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->ReadOnly = true;
-			this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Both;
+			this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox1->Size = System::Drawing::Size(334, 301);
 			this->textBox1->TabIndex = 5;
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -154,7 +157,7 @@ namespace billingSystemGUI {
 			// 
 			// label5
 			// 
-			this->label5->Location = System::Drawing::Point(591, 128);
+			this->label5->Location = System::Drawing::Point(591, 126);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(65, 23);
 			this->label5->TabIndex = 9;
@@ -164,7 +167,7 @@ namespace billingSystemGUI {
 			// 
 			// label6
 			// 
-			this->label6->Location = System::Drawing::Point(564, 172);
+			this->label6->Location = System::Drawing::Point(564, 170);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(91, 25);
 			this->label6->TabIndex = 8;
