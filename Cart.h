@@ -21,6 +21,8 @@ namespace billingSystemGUI {
 	public:
 		Hotel* hotel;
 	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::ListView^ listView1;
+
 	private: System::Windows::Forms::Label^ label6;
 	public:
 		Cart()
@@ -58,7 +60,7 @@ namespace billingSystemGUI {
 	private: System::Windows::Forms::Label^ label1;
 
 	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::ListBox^ listBox1;
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
@@ -94,13 +96,13 @@ namespace billingSystemGUI {
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->SuspendLayout();
 			// 
 			// button3
@@ -165,7 +167,7 @@ namespace billingSystemGUI {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(515, 48);
+			this->label1->Location = System::Drawing::Point(516, 42);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(49, 22);
 			this->label1->TabIndex = 7;
@@ -184,18 +186,6 @@ namespace billingSystemGUI {
 			this->button4->Text = L"Place Order";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &Cart::button4_Click);
-			// 
-			// listBox1
-			// 
-			this->listBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->ItemHeight = 20;
-			this->listBox1->Location = System::Drawing::Point(517, 77);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(352, 284);
-			this->listBox1->TabIndex = 5;
-			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Cart::listBox1_SelectedIndexChanged);
 			// 
 			// label2
 			// 
@@ -260,17 +250,33 @@ namespace billingSystemGUI {
 			this->label6->TabIndex = 12;
 			this->label6->Text = L"Customer Name: ";
 			// 
+			// listView1
+			// 
+			this->listView1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->listView1->FullRowSelect = true;
+			this->listView1->HeaderStyle = System::Windows::Forms::ColumnHeaderStyle::Nonclickable;
+			this->listView1->HideSelection = false;
+			this->listView1->ImeMode = System::Windows::Forms::ImeMode::Disable;
+			this->listView1->Location = System::Drawing::Point(519, 69);
+			this->listView1->MultiSelect = false;
+			this->listView1->Name = L"listView1";
+			this->listView1->Size = System::Drawing::Size(334, 297);
+			this->listView1->TabIndex = 14;
+			this->listView1->UseCompatibleStateImageBehavior = false;
+			this->listView1->View = System::Windows::Forms::View::Details;
+			this->listView1->SelectedIndexChanged += gcnew System::EventHandler(this, &Cart::listView1_SelectedIndexChanged);
+			// 
 			// Cart
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->ClientSize = System::Drawing::Size(901, 446);
+			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->listBox1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button6);
@@ -290,10 +296,20 @@ namespace billingSystemGUI {
 		}
 
 		void loadCart() {
+			listView1->Items->Clear();
+
+
+			listView1->Columns->Add("Product", 210);
+			listView1->Columns->Add("Price", 100);
+
+
 			for (int i = 1; i <= hotel->getCart()->getSize(); i++) {
-				string item = hotel->getCart()->getProduct(i).getProduct_name();
-				System::String^ ITEM = msclr::interop::marshal_as<System::String^>(item) + "\tRs. " + hotel->getCart()->getProduct(i).getProduct_price().ToString();
-				listBox1->Items->Add(ITEM);
+				String^ itemName = gcnew String(hotel->getCart()->getProduct(i).getProduct_name().c_str());
+				String^ itemPrice = "Rs. " + hotel->getCart()->getProduct(i).getProduct_price().ToString();
+
+				ListViewItem^ item = gcnew ListViewItem(itemName);
+				item->SubItems->Add(itemPrice);
+				listView1->Items->Add(item);
 			}
 		}
 #pragma endregion
@@ -304,7 +320,7 @@ namespace billingSystemGUI {
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void listView1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		customerName = textBox1->Text;
 		if (textBox1->Text == " ")

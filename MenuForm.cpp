@@ -9,7 +9,6 @@ namespace billingSystemGUI
 		this->Close();
 	}
 	System::Void MenuForm::MenuForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		if (hotel != nullptr)
-			menuLabel->Text = gcnew String((hotel->getMenu().Display_menu()).c_str());
+		displayMenu();
 	}
 }

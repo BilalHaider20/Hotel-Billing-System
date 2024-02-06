@@ -38,8 +38,12 @@ namespace billingSystemGUI {
 			}
 		}
 	private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::TextBox^ menuLabel;
+
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::ListView^ listView1;
+
+
+
 
 
 
@@ -73,8 +77,8 @@ namespace billingSystemGUI {
 		void InitializeComponent(void)
 		{
 			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->menuLabel = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->SuspendLayout();
 			// 
 			// button6
@@ -91,38 +95,37 @@ namespace billingSystemGUI {
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &MenuForm::button6_Click);
 			// 
-			// menuLabel
-			// 
-			this->menuLabel->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->menuLabel->Cursor = System::Windows::Forms::Cursors::Default;
-			this->menuLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->menuLabel->ImeMode = System::Windows::Forms::ImeMode::Disable;
-			this->menuLabel->Location = System::Drawing::Point(43, 52);
-			this->menuLabel->Multiline = true;
-			this->menuLabel->Name = L"menuLabel";
-			this->menuLabel->ReadOnly = true;
-			this->menuLabel->ScrollBars = System::Windows::Forms::ScrollBars::Both;
-			this->menuLabel->Size = System::Drawing::Size(353, 316);
-			this->menuLabel->TabIndex = 3;
-			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(42, 21);
+			this->label1->Location = System::Drawing::Point(41, 18);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(60, 20);
+			this->label1->Size = System::Drawing::Size(64, 22);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"Menu: ";
+			// 
+			// listView1
+			// 
+			this->listView1->FullRowSelect = true;
+			this->listView1->HeaderStyle = System::Windows::Forms::ColumnHeaderStyle::Nonclickable;
+			this->listView1->HideSelection = false;
+			this->listView1->ImeMode = System::Windows::Forms::ImeMode::Disable;
+			this->listView1->Location = System::Drawing::Point(43, 44);
+			this->listView1->MultiSelect = false;
+			this->listView1->Name = L"listView1";
+			this->listView1->Size = System::Drawing::Size(334, 307);
+			this->listView1->TabIndex = 5;
+			this->listView1->UseCompatibleStateImageBehavior = false;
+			this->listView1->View = System::Windows::Forms::View::Details;
 			// 
 			// MenuForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->ClientSize = System::Drawing::Size(420, 446);
+			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->menuLabel);
 			this->Controls->Add(this->button6);
 			this->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -138,6 +141,36 @@ namespace billingSystemGUI {
 			this->PerformLayout();
 
 		}
+		void displayMenu()
+		{
+			Categories* categoriesList = hotel->getMenu().get_CategoriesList();
+			listView1->Items->Clear();
+			listView1->Groups->Clear();
+
+			listView1->Columns->Add("Product", 210);
+			listView1->Columns->Add("Price", 100);
+
+			for (int i = 1; i <= categoriesList->getSize(); i++)
+			{
+				ProductsList* temp = categoriesList->get_Category(i);
+
+				ListViewGroup^ group = gcnew ListViewGroup();
+				group->Header = gcnew String(temp->getCategory().c_str());
+				listView1->Groups->Add(group);
+
+				for (int j = 1; j <= temp->getSize(); j++)
+				{
+					String^ product = gcnew String(temp->getProduct(j).getProduct_name().c_str());
+					String^ price = "Rs. " + temp->getProduct(j).getProduct_price().ToString();
+
+					ListViewItem^ item = gcnew ListViewItem(product);
+					item->SubItems->Add(price);
+					item->Group = group;
+					listView1->Items->Add(item);
+				}
+			}
+		}
+
 #pragma endregion
 	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void MenuForm_Load(System::Object^ sender, System::EventArgs^ e);
