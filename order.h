@@ -27,12 +27,7 @@ public:
 		this->bill = bill;
 		this->PurchasedItems = PurchasedItems;
 		this->totalItems = PurchasedItems->getSize();
-		auto now = chrono::system_clock::to_time_t(chrono::system_clock::now());
-		string tempDateTime = ctime(&now);
-		if (!tempDateTime.empty())
-		{
-			dateTime = tempDateTime.substr(0, tempDateTime.size() - 1);
-		}
+		this->dateTime = getCurrentDateTime();
 	}
 
 	Order(string customerName, int inv, double bill, int totalItems, ProductsList* PurchasedItems, string dateTime)
@@ -46,7 +41,15 @@ public:
 	}
 
 
-
+	string getCurrentDateTime() {
+		auto now = chrono::system_clock::to_time_t(chrono::system_clock::now());
+		stringstream ss;
+		tm timeinfo = *localtime(&now);
+		char buffer[80];
+		strftime(buffer, sizeof(buffer), "%m-%d-%Y %H:%M", &timeinfo); 
+		ss << buffer;
+		return ss.str();
+	}
 	string getCustomerName() const
 	{
 		return customerName;
