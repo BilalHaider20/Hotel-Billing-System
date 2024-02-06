@@ -42,6 +42,9 @@
     <ClCompile Include="Cart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="billingHistoryForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="billingHistoryForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

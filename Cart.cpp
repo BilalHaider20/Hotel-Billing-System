@@ -12,9 +12,9 @@ namespace billingSystemGUI
 {
 	System::Void Cart::Cart_Load(System::Object^ sender, System::EventArgs^ e) {
 		hotel->takeOrder();
-		label5->Text = "N/A";
 		label3->Text = "Rs. 0";
 		customerName = "N/A";
+		label5->Text = customerName;
 	}
 
 	System::Void Cart::button1_Click(System::Object^ sender, System::EventArgs^ e) {

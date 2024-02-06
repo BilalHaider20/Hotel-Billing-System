@@ -298,10 +298,8 @@ namespace billingSystemGUI {
 		void loadCart() {
 			listView1->Items->Clear();
 
-
 			listView1->Columns->Add("Product", 210);
 			listView1->Columns->Add("Price", 100);
-
 
 			for (int i = 1; i <= hotel->getCart()->getSize(); i++) {
 				String^ itemName = gcnew String(hotel->getCart()->getProduct(i).getProduct_name().c_str());

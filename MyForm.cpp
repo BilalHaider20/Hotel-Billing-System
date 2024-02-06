@@ -3,6 +3,8 @@
 #include "MenuForm.h"
 #include "AddCategoryForm.h"
 #include "Cart.h"
+#include "BillingHistoryForm.h"
+
 
 using namespace System;
 using namespace billingSystemGUI;
@@ -36,6 +38,8 @@ namespace billingSystemGUI
 	}
 
 	System::Void MyForm::button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		billingHistoryForm^ billForm = gcnew billingHistoryForm(hotel);
+		billForm->ShowDialog();
 	}
 
 	System::Void MyForm::button4_Click(System::Object^ sender, System::EventArgs^ e) {

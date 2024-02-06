@@ -16,7 +16,7 @@ private:
 	string name;
 	stack<Order> orderStack;
 	ProductsList* cart;
-	int invoiceNumber = 10000;
+	int invoiceNumber = 10001;
 	menu menu1;
 	double totalSales = 0;
 	int totalProductsSold = 0;
@@ -168,27 +168,23 @@ public:
 
 
 
-	void BillingHistory()
+	string BillingHistory()
 	{
-		system("cls");
-		cout << "\t\tFri-Chicks\n";
-		cout << "............ Billing History ...........\n\n";
+		string output = "";
 		stack<Order> tempStack = orderStack;
 
 		if (tempStack.empty())
 		{
-			cout << "No billing history available." << endl;
-			pressToContinue();
-			return;
+			return "No billing history available.";
 		}
 
 		while (!tempStack.empty())
 		{
 			Order currentOrder = tempStack.top();
-			currentOrder.print2();
+			output += currentOrder.print2();
 			tempStack.pop();
 		}
-		pressToContinue();
+		return output;
 	}
 
 

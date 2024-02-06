@@ -112,7 +112,7 @@ namespace billingSystemGUI {
 			this->listView1->HeaderStyle = System::Windows::Forms::ColumnHeaderStyle::Nonclickable;
 			this->listView1->HideSelection = false;
 			this->listView1->ImeMode = System::Windows::Forms::ImeMode::Disable;
-			this->listView1->Location = System::Drawing::Point(43, 44);
+			this->listView1->Location = System::Drawing::Point(43, 45);
 			this->listView1->MultiSelect = false;
 			this->listView1->Name = L"listView1";
 			this->listView1->Size = System::Drawing::Size(334, 307);
@@ -176,7 +176,6 @@ namespace billingSystemGUI {
 	private: System::Void MenuForm_Load(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void MenuForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		//	Application::Exit();
 	}
 
 	};

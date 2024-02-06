@@ -106,16 +106,18 @@ public:
 		cout << "------------------------------------------\n";
 	}
 
-	void print2()
+	string print2()
 	{
-		cout << "------------------------------------------\n";
-		cout << "Invoice Number: " << getInvoiceNumber() << endl;
-		cout << "Customer Name: " << getCustomerName() << endl;
-		cout << "Date and Time: " << dateTime;
+		string output;
+		output = "\r\n----------------------------------------------------------\r\n";
+		output += "Invoice Number: " + to_string(getInvoiceNumber()) + "\r\n";
+		output += "Customer Name: " + getCustomerName() + "\r\n";
+		output += "Date and Time: " + dateTime;
 
-		cout << "\nTotal Items Purchased: " << getTotalItems() << endl;
-		cout << "Total Bill: Rs." << getBill() << endl;
-		cout << "------------------------------------------\n";
+		output += "\r\nTotal Items Purchased: " + to_string(getTotalItems()) + "\r\n";
+		output += "Total Bill: Rs." + to_string(getBill()) + "\r\n";
+		output += "----------------------------------------------------------\r\n";
+		return output;
 	}
 };
 
