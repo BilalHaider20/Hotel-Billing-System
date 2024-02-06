@@ -176,7 +176,6 @@ public:
 	{
 		string output = "";
 		stack<Order> tempStack = orderStack;
-		string Output;
 		if (tempStack.empty())
 		{
 			return "No billing history available.";
