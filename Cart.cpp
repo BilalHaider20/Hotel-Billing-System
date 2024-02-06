@@ -68,6 +68,7 @@ namespace billingSystemGUI
 	}
 
 	System::Void Cart::button6_Click(System::Object^ sender, System::EventArgs^ e) {
+
 		this->Close();
 	}
 	System::Void Cart::listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
