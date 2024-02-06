@@ -1,5 +1,5 @@
 #include "Billing_History.h"
-//#include "Hotel.h"
+#include "Hotel.h"
 
 using namespace System;
 using namespace System::Windows::Forms;

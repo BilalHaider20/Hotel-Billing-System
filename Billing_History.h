@@ -1,5 +1,5 @@
 #pragma once
-#include "menuManager.h"
+#include "MyForm.h"
 #include "Hotel.h"
 namespace billingSystemGUI {
 
