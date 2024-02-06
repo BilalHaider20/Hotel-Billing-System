@@ -141,7 +141,7 @@ namespace billingSystemGUI {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(312, 36);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"Remove Items from Cart";
+			this->button2->Text = L"Remove to Cart";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &Cart::button2_Click);
 			// 
@@ -166,7 +166,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(515, 48);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(49, 22);
+			this->label1->Size = System::Drawing::Size(59, 26);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"Cart:";
 			// 
@@ -189,10 +189,10 @@ namespace billingSystemGUI {
 			this->listBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->listBox1->FormattingEnabled = true;
-			this->listBox1->ItemHeight = 20;
+			this->listBox1->ItemHeight = 25;
 			this->listBox1->Location = System::Drawing::Point(517, 77);
 			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(352, 284);
+			this->listBox1->Size = System::Drawing::Size(352, 279);
 			this->listBox1->TabIndex = 5;
 			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Cart::listBox1_SelectedIndexChanged);
 			// 
@@ -203,7 +203,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(515, 395);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(85, 20);
+			this->label2->Size = System::Drawing::Size(107, 25);
 			this->label2->TabIndex = 8;
 			this->label2->Text = L"Total Bill: ";
 			// 
@@ -214,7 +214,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(659, 395);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(0, 20);
+			this->label3->Size = System::Drawing::Size(0, 25);
 			this->label3->TabIndex = 9;
 			// 
 			// label4
@@ -224,7 +224,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(50, 59);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(141, 20);
+			this->label4->Size = System::Drawing::Size(178, 25);
 			this->label4->TabIndex = 10;
 			this->label4->Text = L"Customer Name: ";
 			// 
@@ -234,7 +234,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->textBox1->Location = System::Drawing::Point(54, 84);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(312, 27);
+			this->textBox1->Size = System::Drawing::Size(312, 31);
 			this->textBox1->TabIndex = 11;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Cart::textBox1_TextChanged);
 			// 
@@ -245,7 +245,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(659, 373);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(0, 20);
+			this->label5->Size = System::Drawing::Size(0, 25);
 			this->label5->TabIndex = 13;
 			// 
 			// label6
@@ -255,7 +255,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(515, 373);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(141, 20);
+			this->label6->Size = System::Drawing::Size(178, 25);
 			this->label6->TabIndex = 12;
 			this->label6->Text = L"Customer Name: ";
 			// 
