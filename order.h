@@ -5,6 +5,8 @@
 #include <ctime>
 #include <chrono>
 #include "productsList.h"
+#include <sstream> 
+#include <iomanip>
 using namespace std;
 
 class Order
@@ -115,7 +117,9 @@ public:
 		output += "Date and Time: " + dateTime;
 
 		output += "\r\nTotal Items Purchased: " + to_string(getTotalItems()) + "\r\n";
-		output += "Total Bill: Rs." + to_string(getBill()) + "\r\n";
+		ostringstream oss;
+		oss << fixed << setprecision(1) << getBill();
+		output += "Total Bill: Rs." + oss.str() + "\r\n";
 		output += "----------------------------------------------------------\r\n";
 		return output;
 	}
