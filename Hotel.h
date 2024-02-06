@@ -166,13 +166,17 @@ public:
 		inputFile.close();
 	}
 
+	stack<Order> get_Order_Stack()
+	{
+		return this->orderStack;
+	}
 
 
 	string BillingHistory()
 	{
 		string output = "";
 		stack<Order> tempStack = orderStack;
-
+		string Output;
 		if (tempStack.empty())
 		{
 			return "No billing history available.";

@@ -75,7 +75,7 @@ public:
 		return dateTime;
 	}
 
-	void print()
+	void Print_Orders()
 	{
 		system("CLS");
 		cout << "\t\tFri-Chicks\n";
