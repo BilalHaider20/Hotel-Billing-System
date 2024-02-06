@@ -55,7 +55,7 @@ namespace billingSystemGUI
 		}
 		else {
 			String^ Name = customerName;
-			string name = msclr::interop::marshal_as<string>(Name);
+			string name = msclr::interop::marshal_as<string>(Name->ToString());
 			hotel->placeOrder(name);
 			MessageBox::Show("Your order has been placed!", "Message");
 			textBox1->Text = "";
@@ -68,7 +68,6 @@ namespace billingSystemGUI
 	}
 
 	System::Void Cart::button6_Click(System::Object^ sender, System::EventArgs^ e) {
-
 		this->Close();
 	}
 	System::Void Cart::listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
