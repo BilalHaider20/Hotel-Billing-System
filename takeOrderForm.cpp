@@ -17,10 +17,12 @@ namespace billingSystemGUI
 
 	System::Void takeOrderForm::button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ categ = comboBox1->Text;
-		string category = msclr::interop::marshal_as<string>(categ);
-		int index = comboBox2->SelectedIndex + 1;
-
+		int categIndex = comboBox1->SelectedIndex + 1;
+		int prodIndex = comboBox2->SelectedIndex + 1;
+		hotel->addItemsToCart(categIndex, prodIndex);
 		MessageBox::Show("Item Added to Cart Successfully!", "Message");
+
+		button2->Enabled = false;
 		comboBox2->Items->Clear();
 		AddItemsToComboBox(categ);
 	}

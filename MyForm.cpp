@@ -29,6 +29,7 @@ namespace billingSystemGUI
 		menuManager^ menuManageForm = gcnew menuManager(hotel);
 		menuManageForm->ShowDialog();
 	}
+
 	System::Void MyForm::button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		Cart^ cart = gcnew Cart(hotel);
 		cart->ShowDialog();
@@ -36,8 +37,10 @@ namespace billingSystemGUI
 
 	System::Void MyForm::button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+
 	System::Void MyForm::button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+
 	System::Void MyForm::button5_Click(System::Object^ sender, System::EventArgs^ e) {
 		hotel->refreshData();
 		MessageBox::Show("Data Loaded Successfully!", "Message");

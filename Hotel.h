@@ -15,6 +15,7 @@ private:
 	string HISTORY = "history";
 	string name;
 	stack<Order> orderStack;
+	ProductsList* cart;
 	int invoiceNumber = 10000;
 	menu menu1;
 	double totalSales = 0;
@@ -24,6 +25,15 @@ public:
 	Hotel()
 	{
 		name = "-";
+	}
+
+	~Hotel()
+	{
+		while (!orderStack.empty())
+		{
+			Order currentOrder = orderStack.top();
+			orderStack.pop();
+		}
 	}
 
 	Hotel(string name)
@@ -156,19 +166,7 @@ public:
 		inputFile.close();
 	}
 
-	double GenerateBill(ProductsList* cart)
-	{
-		Node<Product>* temp = cart->getHead();
-		double bill = 0;
 
-		while (temp != nullptr)
-		{
-			bill += temp->getData().getProduct_price();
-			temp = temp->getNextPtr();
-		}
-
-		return bill;
-	}
 
 	void BillingHistory()
 	{
@@ -193,107 +191,51 @@ public:
 		pressToContinue();
 	}
 
-	void TakeOrder()
+
+	ProductsList* getCart() {
+		return cart;
+	}
+
+	void takeOrder() {
+		cart = new ProductsList();
+	}
+
+	void addItemsToCart(int categIndex, int prodIndex)
 	{
-		/*
-		system("cls");
-		cout << "\t\tFri-Chicks\n";
-		cout << ".............. Place Order .............\n\n";
-		if (menu1.get_CategoriesList()->getSize() == 0)
-		{
-			cout << "Menu is Empty!\nPlease add Categories and items in the menu." << endl;
-			pressToContinue();
-			return;
-		}
-		*/
-
-		ProductsList* cart = new ProductsList();
 		ProductsList* temp = NULL;
+		temp = menu1.get_CategoriesList()->get_Category(categIndex);
+		Product p = temp->getProduct(prodIndex);
+		cart->addProduct(p);
+	}
 
-		cout << "\nCustomer Name: ";
-		cin.ignore();
-		string name;
-		getline(cin, name);
+	void removeItemsFromCart(int ind) {
+		cart->deleteProduct(ind);
+	}
 
-		while (true)
-		{
-			menu1.Display_menu();
-
-			cout << "========================================================\n\n";
-
-			cout << "Hi " << name << "! What do you want to order? \n(Enter \"x\" when done) " << endl;
-
-			cout << "\n\nSelect Category:\n\n";
-
-			Node<ProductsList*>* curr = menu1.get_CategoriesList()->getHead();
-
-			for (int i = 1; i <= menu1.get_CategoriesList()->getSize(); i++)
-			{
-				cout << i << ". " << curr->getData()->getCategory() << endl;
-				curr = curr->getNextPtr();
-			}
-
-			cout << "\nEnter the corresponding number: ";
-			string input;
-			cin >> input;
-
-			if (input == "x" || input == "X")
-				break;
-			int c = stoi(input);
-			if (c > menu1.get_CategoriesList()->getSize() || c < 1)
-			{
-				cout << "\nInvalid Input\n";
-				pressToContinue();
-				continue;
-			}
-
-			temp = menu1.get_CategoriesList()->get_Category(c);
-
-			while (true)
-			{
-				system("CLS");
-				cout << "\t\tFri-Chicks\n";
-				cout << ".............. Place Order .............\n\n";
-
-				temp->print();
-				cout << "--------------------------------------------" << endl;
-				cout << "Enter the serial number to add to Cart (Enter \"x\" when done): ";
-				string input;
-				cin >> input;
-				if (input == "x" || input == "X")
-					break;
-				int c = stoi(input);
-				if (c > temp->getSize() || c < 1)
-				{
-					cout << "Invalid input!\nPlease enter a correct serial number" << endl;
-					pressToContinue();
-					continue;
-				}
-
-				Product p = temp->getProduct(c);
-				cart->addProduct(p);
-				cout << "\n"
-					<< p.getProduct_name() << " Added to Cart Successfully\n";
-				pressToContinue();
-			}
-		}
-		if (cart->getSize() == 0)
-		{
-			cout << "\nYou Haven't Placed Any Order\n";
-			delete cart;
-			pressToContinue();
-			return;
-		}
-		double bill = GenerateBill(cart);
-		Order newOrder(name, ++invoiceNumber, bill, cart);
+	void placeOrder(string customerName) {
+		double bill = GenerateBill();
+		Order newOrder(customerName, ++invoiceNumber, bill, cart);
 		orderStack.push(newOrder);
-		newOrder.print();
 		Compute_Total_Sales();
 		saveHistory();
-		pressToContinue();
+		emptyCart();
+	}
 
-		delete cart;
-		return;
+	void emptyCart() {
+		cart->emptyList();
+	}
+
+	double GenerateBill()
+	{
+		Node<Product>* temp = cart->getHead();
+		double bill = 0;
+
+		while (temp != nullptr)
+		{
+			bill += temp->getData().getProduct_price();
+			temp = temp->getNextPtr();
+		}
+		return bill;
 	}
 
 	void Compute_Total_Sales()
@@ -328,7 +270,7 @@ public:
 	}
 
 	void exit() {
-		delete menu1.get_CategoriesList();
+		menu1.get_CategoriesList()->emptyMenu();
 	}
 
 	void loadExistingData() {

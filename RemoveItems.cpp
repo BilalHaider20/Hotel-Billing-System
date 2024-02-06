@@ -20,6 +20,7 @@ namespace billingSystemGUI
 		int index = comboBox2->SelectedIndex + 1;
 		hotel->getMenu().deleteItem(category, index);
 		MessageBox::Show("Item Removed Successfully!", "Message");
+		button2->Enabled = false;
 		comboBox2->Items->Clear();
 		AddItemsToComboBox(categ);
 	}

@@ -172,7 +172,7 @@ namespace billingSystemGUI {
 			this->MaximizeBox = false;
 			this->Name = L"takeOrderForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Remove Items";
+			this->Text = L"Add Items to Cart";
 			this->Load += gcnew System::EventHandler(this, &takeOrderForm::takeOrderForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();

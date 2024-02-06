@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 #include "MyForm.h"
+#include "msclr/marshal_cppstd.h"
 
 namespace billingSystemGUI {
 	using namespace System;
@@ -19,6 +20,9 @@ namespace billingSystemGUI {
 	{
 	public:
 		Hotel* hotel;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
+	public:
 		Cart()
 		{
 			InitializeComponent();
@@ -28,6 +32,7 @@ namespace billingSystemGUI {
 			InitializeComponent();
 			this->hotel = hotel;
 		}
+		String^ customerName;
 
 
 	protected:
@@ -50,8 +55,13 @@ namespace billingSystemGUI {
 
 	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ menuLabel;
+
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::ListBox^ listBox1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::TextBox^ textBox1;
 
 
 
@@ -82,8 +92,14 @@ namespace billingSystemGUI {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->menuLabel = (gcnew System::Windows::Forms::TextBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button3
@@ -92,7 +108,7 @@ namespace billingSystemGUI {
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(54, 202);
+			this->button3->Location = System::Drawing::Point(54, 227);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(312, 40);
 			this->button3->TabIndex = 2;
@@ -106,7 +122,7 @@ namespace billingSystemGUI {
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(54, 118);
+			this->button1->Location = System::Drawing::Point(54, 143);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(312, 36);
 			this->button1->TabIndex = 0;
@@ -117,10 +133,11 @@ namespace billingSystemGUI {
 			// button2
 			// 
 			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button2->Enabled = false;
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(54, 160);
+			this->button2->Location = System::Drawing::Point(54, 185);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(312, 36);
 			this->button2->TabIndex = 1;
@@ -134,10 +151,10 @@ namespace billingSystemGUI {
 			this->button6->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			this->button6->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button6->Location = System::Drawing::Point(54, 294);
+			this->button6->Location = System::Drawing::Point(54, 319);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(312, 40);
-			this->button6->TabIndex = 5;
+			this->button6->TabIndex = 4;
 			this->button6->Text = L"Back";
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &Cart::button6_Click);
@@ -145,26 +162,13 @@ namespace billingSystemGUI {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(513, 54);
+			this->label1->Location = System::Drawing::Point(515, 48);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(46, 20);
+			this->label1->Size = System::Drawing::Size(49, 22);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"Cart:";
-			// 
-			// menuLabel
-			// 
-			this->menuLabel->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->menuLabel->Cursor = System::Windows::Forms::Cursors::Default;
-			this->menuLabel->ImeMode = System::Windows::Forms::ImeMode::Disable;
-			this->menuLabel->Location = System::Drawing::Point(514, 85);
-			this->menuLabel->Multiline = true;
-			this->menuLabel->Name = L"menuLabel";
-			this->menuLabel->ReadOnly = true;
-			this->menuLabel->ScrollBars = System::Windows::Forms::ScrollBars::Both;
-			this->menuLabel->Size = System::Drawing::Size(353, 316);
-			this->menuLabel->TabIndex = 6;
 			// 
 			// button4
 			// 
@@ -172,21 +176,102 @@ namespace billingSystemGUI {
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(54, 248);
+			this->button4->Location = System::Drawing::Point(54, 273);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(312, 40);
-			this->button4->TabIndex = 8;
+			this->button4->TabIndex = 3;
 			this->button4->Text = L"Place Order";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &Cart::button4_Click);
+			// 
+			// listBox1
+			// 
+			this->listBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->listBox1->FormattingEnabled = true;
+			this->listBox1->ItemHeight = 20;
+			this->listBox1->Location = System::Drawing::Point(517, 77);
+			this->listBox1->Name = L"listBox1";
+			this->listBox1->Size = System::Drawing::Size(352, 284);
+			this->listBox1->TabIndex = 5;
+			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Cart::listBox1_SelectedIndexChanged);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(515, 395);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(85, 20);
+			this->label2->TabIndex = 8;
+			this->label2->Text = L"Total Bill: ";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(659, 395);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(0, 20);
+			this->label3->TabIndex = 9;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(50, 59);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(141, 20);
+			this->label4->TabIndex = 10;
+			this->label4->Text = L"Customer Name: ";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox1->Location = System::Drawing::Point(54, 84);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(312, 27);
+			this->textBox1->TabIndex = 11;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Cart::textBox1_TextChanged);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(659, 373);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(0, 20);
+			this->label5->TabIndex = 13;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(515, 373);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(141, 20);
+			this->label6->TabIndex = 12;
+			this->label6->Text = L"Customer Name: ";
 			// 
 			// Cart
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->ClientSize = System::Drawing::Size(901, 446);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->listBox1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->menuLabel);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button3);
@@ -195,11 +280,19 @@ namespace billingSystemGUI {
 			this->MaximizeBox = false;
 			this->Name = L"Cart";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Menu Manager";
+			this->Text = L"Place order";
 			this->Load += gcnew System::EventHandler(this, &Cart::Cart_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+		}
+
+		void loadCart() {
+			for (int i = 1; i <= hotel->getCart()->getSize(); i++) {
+				string item = hotel->getCart()->getProduct(i).getProduct_name();
+				System::String^ ITEM = msclr::interop::marshal_as<System::String^>(item) + "\tRs. " + hotel->getCart()->getProduct(i).getProduct_price().ToString();
+				listBox1->Items->Add(ITEM);
+			}
 		}
 #pragma endregion
 
@@ -209,5 +302,14 @@ namespace billingSystemGUI {
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		customerName = textBox1->Text;
+		if (textBox1->Text == " ")
+			textBox1->Text = "";
+		if (customerName == "")
+			customerName = "N/A";
+		label5->Text = customerName;
+	}
 	};
 }
