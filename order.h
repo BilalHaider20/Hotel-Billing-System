@@ -47,7 +47,7 @@ public:
 		stringstream ss;
 		tm timeinfo = *localtime(&now);
 		char buffer[80];
-		strftime(buffer, sizeof(buffer), "%m-%d-%Y %H:%M", &timeinfo); 
+		strftime(buffer, sizeof(buffer), "%m-%d-%Y %H:%M", &timeinfo);
 		ss << buffer;
 		return ss.str();
 	}
@@ -96,7 +96,7 @@ public:
 		}
 		output += "\r\n  Total Items: " + to_string(getTotalItems()) + "\r\n";
 		output += "  Total Bill: Rs." + bill + "\r\n\r\n";
-		output += " -----------------------------------------------------------------\r\n";
+		output += " ----------------------------------------------------------------\r\n";
 		return output;
 	}
 };

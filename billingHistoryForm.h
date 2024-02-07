@@ -49,6 +49,8 @@ namespace billingSystemGUI {
 
 
 
+
+
 	protected:
 
 
@@ -104,7 +106,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(41, 18);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(157, 26);
+			this->label1->Size = System::Drawing::Size(129, 22);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"Billing History: ";
 			// 
@@ -112,7 +114,7 @@ namespace billingSystemGUI {
 			// 
 			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBox1->Cursor = System::Windows::Forms::Cursors::Default;
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Calibri", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Calibri Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox1->ForeColor = System::Drawing::SystemColors::MenuText;
 			this->textBox1->ImeMode = System::Windows::Forms::ImeMode::Disable;
@@ -121,43 +123,40 @@ namespace billingSystemGUI {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->ReadOnly = true;
 			this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			this->textBox1->Size = System::Drawing::Size(334, 301);
+			this->textBox1->Size = System::Drawing::Size(352, 301);
 			this->textBox1->TabIndex = 5;
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// label2
 			// 
-			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::SystemColors::Desktop;
 			this->label2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label2->Location = System::Drawing::Point(459, 52);
+			this->label2->Location = System::Drawing::Point(472, 108);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(152, 27);
+			this->label2->Size = System::Drawing::Size(124, 22);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"TOTAL SALES";
 			// 
 			// label3
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(414, 126);
+			this->label3->Location = System::Drawing::Point(410, 142);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(184, 25);
+			this->label3->Size = System::Drawing::Size(166, 20);
 			this->label3->TabIndex = 7;
-			this->label3->Text = L"Total Product Sold :";
+			this->label3->Text = L"Total Products Sold :";
 			// 
 			// label4
 			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(414, 172);
+			this->label4->Location = System::Drawing::Point(410, 167);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(150, 25);
+			this->label4->Size = System::Drawing::Size(126, 20);
 			this->label4->TabIndex = 7;
 			this->label4->Text = L"Total Revenue :";
 			// 
 			// label5
 			// 
-			this->label5->Location = System::Drawing::Point(591, 126);
+			this->label5->Location = System::Drawing::Point(573, 142);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(65, 23);
 			this->label5->TabIndex = 9;
@@ -167,17 +166,17 @@ namespace billingSystemGUI {
 			// 
 			// label6
 			// 
-			this->label6->Location = System::Drawing::Point(564, 170);
+			this->label6->Location = System::Drawing::Point(573, 165);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(91, 25);
 			this->label6->TabIndex = 8;
-			this->label6->Text = L"0 Rs.";
+			this->label6->Text = L"Rs. 0";
 			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// billingHistoryForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
-			this->ClientSize = System::Drawing::Size(663, 446);
+			this->ClientSize = System::Drawing::Size(678, 446);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
