@@ -28,12 +28,7 @@ public:
 		this->bill = bill;
 		this->PurchasedItems = PurchasedItems;
 		this->totalItems = PurchasedItems->getSize();
-		auto now = chrono::system_clock::to_time_t(chrono::system_clock::now());
-		string tempDateTime = ctime(&now);
-		if (!tempDateTime.empty())
-		{
-			dateTime = tempDateTime.substr(0, tempDateTime.size() - 1);
-		}
+		this->dateTime = getCurrentDateTime();
 	}
 
 	Order(string customerName, int inv, double bill, int totalItems, ProductsList* PurchasedItems, string dateTime)
@@ -47,7 +42,15 @@ public:
 	}
 
 
-
+	string getCurrentDateTime() {
+		auto now = chrono::system_clock::to_time_t(chrono::system_clock::now());
+		stringstream ss;
+		tm timeinfo = *localtime(&now);
+		char buffer[80];
+		strftime(buffer, sizeof(buffer), "%m-%d-%Y %H:%M", &timeinfo); 
+		ss << buffer;
+		return ss.str();
+	}
 	string getCustomerName() const
 	{
 		return customerName;
@@ -76,37 +79,6 @@ public:
 	string getDateTime() const
 	{
 		return dateTime;
-	}
-
-	void Print_Orders()
-	{
-		system("CLS");
-		cout << "\t\tFri-Chicks\n";
-		cout << "................. Invoice ................\n\n";
-		cout << "------------------------------------------\n";
-		cout << "\nInvoice Number: " << getInvoiceNumber() << endl;
-		cout << "Customer Name: " << getCustomerName() << endl;
-		cout << "Date and Time: " << dateTime;
-
-		cout << "\n\nItems Purchased\n";
-		ProductsList* purchasedItems = GetPurchasedItems();
-
-		cout << "------------------------------------------\n";
-		cout << left << setw(5) << "Sr." << setw(25) << "Name"
-			<< "Price" << endl;
-		cout << "------------------------------------------\n";
-
-		for (int i = 1; i <= purchasedItems->getSize(); ++i)
-		{
-			Product product = purchasedItems->getProduct(i);
-			cout << setw(5) << i << setw(25) << product.getProduct_name() << "Rs. " << product.getProduct_price() << endl;
-		}
-		cout << "------------------------------------------\n";
-
-		cout << setw(30) << "Total Bill:"
-			<< "Rs. " << getBill() << endl;
-		cout << setw(30) << "Total Items Purchased: " << getTotalItems() << endl;
-		cout << "------------------------------------------\n";
 	}
 
 	string print2()
