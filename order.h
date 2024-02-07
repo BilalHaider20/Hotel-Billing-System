@@ -90,12 +90,12 @@ public:
 		output += "\r\n  Invoice Number: " + to_string(getInvoiceNumber()) + "\r\n";
 		output += "  Customer Name: " + getCustomerName() + "\r\n";
 		output += "  Date and Time: " + dateTime + "\r\n\r\n";
-		output += "  Items Purchased: \r\n";
+		output += "  Items Purchased:\r\n";
 		for (int i = 1; i <= PurchasedItems->getSize(); i++) {
-			output += "     " + PurchasedItems->getProduct(i).getProduct_name() + "\r\n";
+			output += PurchasedItems->getProduct(i).getProduct_name() + "\r\n";
 		}
 		output += "\r\n  Total Items: " + to_string(getTotalItems()) + "\r\n";
-		output += "  Total Bill: Rs." + bill + "\r\n\r\n";
+		output += "  Total Bill: Rs. " + bill + "\r\n\r\n";
 		output += " ----------------------------------------------------------------\r\n";
 		return output;
 	}

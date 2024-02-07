@@ -86,11 +86,11 @@ namespace billingSystemGUI {
 			// 
 			this->button3->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->button3->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button3->Location = System::Drawing::Point(89, 177);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(235, 40);
+			this->button3->Size = System::Drawing::Size(235, 45);
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Remove Category";
 			this->button3->UseVisualStyleBackColor = true;
@@ -100,11 +100,11 @@ namespace billingSystemGUI {
 			// 
 			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(89, 93);
+			this->button1->Location = System::Drawing::Point(89, 75);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(235, 36);
+			this->button1->Size = System::Drawing::Size(235, 45);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"View Menu";
 			this->button1->UseVisualStyleBackColor = true;
@@ -114,11 +114,11 @@ namespace billingSystemGUI {
 			// 
 			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(89, 135);
+			this->button2->Location = System::Drawing::Point(89, 126);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(235, 36);
+			this->button2->Size = System::Drawing::Size(235, 45);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Add Category";
 			this->button2->UseVisualStyleBackColor = true;
@@ -128,11 +128,11 @@ namespace billingSystemGUI {
 			// 
 			this->button5->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->button5->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button5->Location = System::Drawing::Point(89, 265);
+			this->button5->Location = System::Drawing::Point(89, 279);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(235, 36);
+			this->button5->Size = System::Drawing::Size(235, 45);
 			this->button5->TabIndex = 4;
 			this->button5->Text = L"Remove Items";
 			this->button5->UseVisualStyleBackColor = true;
@@ -142,11 +142,11 @@ namespace billingSystemGUI {
 			// 
 			this->button6->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button6->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->button6->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button6->Location = System::Drawing::Point(89, 307);
+			this->button6->Location = System::Drawing::Point(89, 330);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(235, 40);
+			this->button6->Size = System::Drawing::Size(235, 45);
 			this->button6->TabIndex = 5;
 			this->button6->Text = L"Back";
 			this->button6->UseVisualStyleBackColor = true;
@@ -156,11 +156,11 @@ namespace billingSystemGUI {
 			// 
 			this->button4->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->button4->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(89, 223);
+			this->button4->Location = System::Drawing::Point(89, 228);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(235, 36);
+			this->button4->Size = System::Drawing::Size(235, 45);
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"Add Items";
 			this->button4->UseVisualStyleBackColor = true;
