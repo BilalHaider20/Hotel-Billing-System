@@ -44,14 +44,6 @@ namespace billingSystemGUI {
 
 
 
-
-
-
-
-
-
-
-
 	protected:
 
 

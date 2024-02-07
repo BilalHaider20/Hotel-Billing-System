@@ -297,6 +297,7 @@ namespace billingSystemGUI {
 
 		void loadCart() {
 			listView1->Items->Clear();
+			listView1->Columns->Clear();
 
 			listView1->Columns->Add("Product", 210);
 			listView1->Columns->Add("Price", 100);

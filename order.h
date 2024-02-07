@@ -114,14 +114,17 @@ public:
 		String^ Bill = getBill().ToString();
 		string bill = msclr::interop::marshal_as<string>(Bill);
 		string output;
-		output = "\r\n----------------------------------------------------------\r\n";
-		output += "Invoice Number: " + to_string(getInvoiceNumber()) + "\r\n";
-		output += "Customer Name: " + getCustomerName() + "\r\n";
-		output += "Date and Time: " + dateTime;
-
-		output += "\r\nTotal Items Purchased: " + to_string(getTotalItems()) + "\r\n";
-		output += "Total Bill: Rs." + bill + "\r\n";
-		output += "----------------------------------------------------------\r\n";
+		//output = "\r\n------------------------------------------------------------------\r\n";
+		output += "\r\n  Invoice Number: " + to_string(getInvoiceNumber()) + "\r\n";
+		output += "  Customer Name: " + getCustomerName() + "\r\n";
+		output += "  Date and Time: " + dateTime + "\r\n\r\n";
+		output += "  Items Purchased: \r\n";
+		for (int i = 1; i <= PurchasedItems->getSize(); i++) {
+			output += "     " + PurchasedItems->getProduct(i).getProduct_name() + "\r\n";
+		}
+		output += "\r\n  Total Items: " + to_string(getTotalItems()) + "\r\n";
+		output += "  Total Bill: Rs." + bill + "\r\n\r\n";
+		output += " -----------------------------------------------------------------\r\n";
 		return output;
 	}
 };

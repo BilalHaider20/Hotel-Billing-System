@@ -101,6 +101,8 @@ namespace billingSystemGUI {
 			// 
 			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBox1->Cursor = System::Windows::Forms::Cursors::Default;
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->textBox1->ImeMode = System::Windows::Forms::ImeMode::Disable;
 			this->textBox1->Location = System::Drawing::Point(43, 50);
 			this->textBox1->Multiline = true;

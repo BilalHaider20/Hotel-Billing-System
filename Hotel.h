@@ -3,6 +3,7 @@
 #include <string>
 #include <conio.h>
 #include <fstream>
+#include <sstream>
 
 #include "Menu.h"
 #include "order.h"
@@ -98,21 +99,14 @@ public:
 
 	void loadHistory()
 	{
-		string name;
-		string prodName;
-		string tempPrice;
-		double prodPrice;
-		int invNumber;
-		string dateTime;
+		string name, prods, dateTime;
 		double bill;
-		int totalItems;
-		string prods;
-		ProductsList* productsPurchased = new ProductsList();
+		int invNumber, totalItems;
+
 		ifstream inputFile(HISTORY);
 
 		if (!inputFile.is_open())
 		{
-			//cerr << "\nError opening file for reading." << endl;
 			return;
 		}
 
@@ -123,48 +117,46 @@ public:
 
 		while (inputFile >> name >> invNumber >> bill >> totalItems >> totalSales >> totalProductsSold >> prods >> invoiceNumber >> dateTime)
 		{
-			this->totalSales = totalSales;
-			this->totalProductsSold = totalProductsSold;
-			this->invoiceNumber = invoiceNumber;
-			string tempWord;
 			for (char& c : name)
-				if (c == '_')
-					c = ' ';
-			for (char& c : dateTime)
-				if (c == '_')
-					c = ' ';
-
-			for (char c : prods)
 			{
-				if (c != '-' && c != '*')
-				{
-					tempWord += c;
-				}
-				else
-				{
-					if (!tempWord.empty())
-					{
-						if (c == '*')
-						{
-							prodName = tempWord;
-							for (char& c : prodName)
-								if (c == '_')
-									c = ' ';
-						}
-						else if (c == '-')
-						{
-							prodPrice = std::stod(tempWord);
-							productsPurchased->addProduct(prodName, prodPrice);
-						}
-						tempWord.clear();
-					}
-				}
+				if (c == '_')
+					c = ' ';
 			}
+			for (char& c : dateTime)
+			{
+				if (c == '_')
+					c = ' ';
+			}
+
+			ProductsList* productsPurchased = new ProductsList();
+
+			stringstream ss(prods);
+			string productInfo;
+			while (getline(ss, productInfo, '-'))
+			{
+				stringstream prodStream(productInfo);
+				string productName, tempPrice;
+
+				getline(prodStream, productName, '*');
+				getline(prodStream, tempPrice, '*');
+
+				for (char& c : productName)
+				{
+					if (c == '_')
+						c = ' ';
+				}
+
+				double productPrice = stod(tempPrice);
+
+				productsPurchased->addProduct(productName, productPrice);
+			}
+
 			orderStack.push(Order(name, invNumber, bill, totalItems, productsPurchased, dateTime));
 		}
 
 		inputFile.close();
 	}
+
 
 	stack<Order> get_Order_Stack()
 	{
@@ -174,6 +166,7 @@ public:
 
 	string BillingHistory()
 	{
+		loadHistory();
 		string output = "";
 		stack<Order> tempStack = orderStack;
 		if (tempStack.empty())
