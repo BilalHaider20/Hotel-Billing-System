@@ -299,15 +299,17 @@ namespace billingSystemGUI {
 			listView1->Items->Clear();
 			listView1->Columns->Clear();
 
-			listView1->Columns->Add("Product", 210);
-			listView1->Columns->Add("Price", 100);
+			listView1->Columns->Add("Product", 160);
+			listView1->Columns->Add("Price", 80);
+			listView1->Columns->Add("Qty", 50);
 
 			for (int i = 1; i <= hotel->getCart()->getSize(); i++) {
 				String^ itemName = gcnew String(hotel->getCart()->getProduct(i).getProduct_name().c_str());
 				String^ itemPrice = "Rs. " + hotel->getCart()->getProduct(i).getProduct_price().ToString();
-
+				String^ Qty = hotel->get_Quantities(i-1).ToString();
 				ListViewItem^ item = gcnew ListViewItem(itemName);
 				item->SubItems->Add(itemPrice);
+				item->SubItems->Add(Qty);
 				listView1->Items->Add(item);
 			}
 		}

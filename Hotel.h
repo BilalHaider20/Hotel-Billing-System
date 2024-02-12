@@ -37,7 +37,7 @@ public:
 			Order currentOrder = orderStack.top();
 			orderStack.pop();
 		}
-		quantities.clear();
+		//quantities.clear();
 	}
 
 	Hotel(string name)
@@ -286,8 +286,15 @@ void loadHistory()
 	{
 		return this->orderStack;
 	}
-
-
+	
+	vector<double> get_Quantities()
+	{
+		return this->quantities;
+	}
+	double get_Quantities(int i)
+	{
+		return this->quantities[i];
+	}
 	string BillingHistory()
 	{
 		loadHistory();
@@ -327,6 +334,7 @@ void loadHistory()
 
 	void removeItemsFromCart(int ind) {
 		cart->deleteProduct(ind);
+		quantities.erase(quantities.begin() + (ind-1));
 	}
 
 	void placeOrder(string customerName) {
