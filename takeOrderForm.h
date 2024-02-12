@@ -49,6 +49,8 @@ namespace billingSystemGUI {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::ListView^ listView1;
 	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Label^ label4;
 
 
 
@@ -81,6 +83,8 @@ namespace billingSystemGUI {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -106,7 +110,7 @@ namespace billingSystemGUI {
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Location = System::Drawing::Point(30, 86);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(356, 28);
+			this->comboBox1->Size = System::Drawing::Size(356, 33);
 			this->comboBox1->TabIndex = 2;
 			this->comboBox1->TextChanged += gcnew System::EventHandler(this, &takeOrderForm::comboBox1_TextChanged);
 			// 
@@ -118,7 +122,7 @@ namespace billingSystemGUI {
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(85, 207);
+			this->button2->Location = System::Drawing::Point(85, 291);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(235, 40);
 			this->button2->TabIndex = 3;
@@ -136,7 +140,7 @@ namespace billingSystemGUI {
 			this->comboBox2->FormattingEnabled = true;
 			this->comboBox2->Location = System::Drawing::Point(30, 158);
 			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(356, 28);
+			this->comboBox2->Size = System::Drawing::Size(356, 33);
 			this->comboBox2->TabIndex = 4;
 			this->comboBox2->TextChanged += gcnew System::EventHandler(this, &takeOrderForm::comboBox2_TextChanged);
 			// 
@@ -148,7 +152,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(30, 132);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(93, 20);
+			this->label2->Size = System::Drawing::Size(118, 25);
 			this->label2->TabIndex = 7;
 			this->label2->Text = L"Select Item";
 			// 
@@ -159,7 +163,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(30, 60);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(128, 20);
+			this->label1->Size = System::Drawing::Size(165, 25);
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"Select Category";
 			// 
@@ -185,14 +189,39 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(530, 59);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(64, 22);
+			this->label3->Size = System::Drawing::Size(78, 26);
 			this->label3->TabIndex = 8;
 			this->label3->Text = L"Menu: ";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Enabled = false;
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox1->Location = System::Drawing::Point(30, 239);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(356, 30);
+			this->textBox1->TabIndex = 10;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &takeOrderForm::textBox1_TextChanged);
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Enabled = false;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(30, 211);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(104, 25);
+			this->label4->TabIndex = 11;
+			this->label4->Text = L"Quantity :";
 			// 
 			// takeOrderForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->ClientSize = System::Drawing::Size(901, 446);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -270,5 +299,6 @@ namespace billingSystemGUI {
 	private: System::Void comboBox2_TextChanged(System::Object^ sender, System::EventArgs^ e);
 
 
-	};
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e);
+};
 }

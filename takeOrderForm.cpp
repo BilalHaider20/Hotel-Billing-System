@@ -21,9 +21,13 @@ namespace billingSystemGUI
 		String^ categ = comboBox1->Text;
 		int categIndex = comboBox1->SelectedIndex + 1;
 		int prodIndex = comboBox2->SelectedIndex + 1;
-		hotel->addItemsToCart(categIndex, prodIndex);
+		double quantity = Convert::ToDouble(textBox1->Text);
+		hotel->addItemsToCart(categIndex, prodIndex,quantity);
 		MessageBox::Show("Item Added to Cart Successfully!", "Message");
 		button2->Enabled = false;
+		textBox1->Enabled = false;
+		textBox1->Text ="";
+		label4->Enabled = false;
 		comboBox2->Items->Clear();
 		AddItemsToComboBox(categ);
 	}
@@ -40,6 +44,19 @@ namespace billingSystemGUI
 	System::Void takeOrderForm::comboBox2_TextChanged(System::Object^ sender, System::EventArgs^ e)
 	{
 		if (comboBox2->Text != "" && comboBox2->Items->Count != 0)
+		{
+			textBox1->Enabled = true;
+			label4->Enabled = true;
+		}
+		else
+		{
+			label4->Enabled = false;
+			textBox1->Enabled = false;
+		}
+	}
+
+	System::Void takeOrderForm::textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (textBox1->Text != "")
 			button2->Enabled = true;
 		else
 			button2->Enabled = false;

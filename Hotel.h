@@ -3,7 +3,7 @@
 #include <string>
 #include <conio.h>
 #include <fstream>
-
+#include <vector>
 #include "Menu.h"
 #include "order.h"
 #include "productsList.h"
@@ -16,6 +16,7 @@ private:
 	string name;
 	stack<Order> orderStack;
 	ProductsList* cart;
+	vector <double> quantities;
 	int invoiceNumber = 10001;
 	menu menu1;
 	double totalSales = 0;
@@ -70,10 +71,14 @@ public:
 			int invNumber = currentOrder.getInvoiceNumber();
 			int totalItems = currentOrder.getTotalItems();
 			string dateTime = currentOrder.getDateTime();
+			string quantity = "";
 			ProductsList* p = new ProductsList();
 			p = currentOrder.GetPurchasedItems();
 			string prods = "";
-
+			for each (double Q in currentOrder.get_Quantities())
+			{
+				quantity += to_string(Q)+ "#";
+			}
 			Node<Product>* curr = p->getHead();
 			while (curr != NULL)
 			{
@@ -97,7 +102,7 @@ public:
 					c = '_';
 			}
 
-			outputFile << name << " " << invNumber << " " << bill << " " << totalItems << " " << totalSales << " " << totalProductsSold << " " << prods << " " << invoiceNumber << " " << dateTime << " " << endl;
+			outputFile << name << " " << invNumber << " " << bill << " " << totalItems << " " << totalSales << " " << totalProductsSold << " " << prods << " "<< quantity <<" " << dateTime << " " << endl;
 			tempStack.pop();
 		}
 		outputFile.close();
@@ -115,6 +120,7 @@ public:
 		int totalItems;
 		string prods;
 		ProductsList* productsPurchased = new ProductsList();
+		string Q = "";
 		ifstream inputFile(HISTORY);
 
 		if (!inputFile.is_open())
@@ -128,19 +134,32 @@ public:
 			orderStack.pop();
 		}
 
-		while (inputFile >> name >> invNumber >> bill >> totalItems >> totalSales >> totalProductsSold >> prods >> invoiceNumber >> dateTime)
+		while (inputFile >> name >> invNumber >> bill >> totalItems >> totalSales >> totalProductsSold >> prods >> Q >> dateTime)
 		{
 			this->totalSales = totalSales;
 			this->totalProductsSold = totalProductsSold;
-			this->invoiceNumber = invoiceNumber;
+			this->invoiceNumber = invNumber;
 			string tempWord;
+			string tempQuantity;
 			for (char& c : name)
 				if (c == '_')
 					c = ' ';
 			for (char& c : dateTime)
 				if (c == '_')
 					c = ' ';
+			for (char c : Q)
+			{
+				if (c != '#')
+				{
+					tempQuantity += c;
+				}
+				else
+				{
+					quantities.push_back(stod(tempQuantity));
+					tempQuantity = "";
+				}
 
+			}
 			for (char c : prods)
 			{
 				if (c != '-' && c != '*')
@@ -167,7 +186,7 @@ public:
 					}
 				}
 			}
-			orderStack.push(Order(name, invNumber, bill, totalItems, productsPurchased, dateTime));
+			orderStack.push(Order(name, invNumber, bill, totalItems, productsPurchased, dateTime,quantities));
 		}
 
 		inputFile.close();
@@ -206,11 +225,12 @@ public:
 		cart = new ProductsList();
 	}
 
-	void addItemsToCart(int categIndex, int prodIndex)
+	void addItemsToCart(int categIndex, int prodIndex,double quantity)
 	{
 		ProductsList* temp = NULL;
 		temp = menu1.get_CategoriesList()->get_Category(categIndex);
 		Product p = temp->getProduct(prodIndex);
+		quantities.push_back(quantity);
 		cart->addProduct(p);
 	}
 
@@ -220,7 +240,7 @@ public:
 
 	void placeOrder(string customerName) {
 		double bill = GenerateBill();
-		Order newOrder(customerName, ++invoiceNumber, bill, cart);
+		Order newOrder(customerName, ++invoiceNumber, bill, cart,quantities);
 		orderStack.push(newOrder);
 		Compute_Total_Sales();
 		saveHistory();
@@ -229,18 +249,21 @@ public:
 
 	void emptyCart() {
 		cart->emptyList();
+		quantities.clear();
 	}
 
 	double GenerateBill()
 	{
 		Node<Product>* temp = cart->getHead();
 		double bill = 0;
-
+		int i = quantities.size()+1;
 		while (temp != nullptr)
-		{
-			bill += temp->getData().getProduct_price();
+		{	
+			bill += temp->getData().getProduct_price()*quantities[i];
 			temp = temp->getNextPtr();
+			i--;
 		}
+		i = 0;
 		return bill;
 	}
 
@@ -273,94 +296,5 @@ public:
 	void loadExistingData() {
 		menu1.loadData();
 		loadHistory();
-	}
-
-	/*
-	void MenuManager()
-	{
-		while (true)
-		{
-			system("cls");
-			cout << "\t\tFri-Chicks\n";
-			cout << "............ Menu Management ...........\n\n";
-
-			cout << "1. See Menu \n2. Add Category \n3. Delete Category \n4. Add New Items in Menu \n5. Delete Items from Menu \n6. Go Back" << endl;
-			cout << "\nEnter the corresponding number: ";
-			char input;
-			cin >> input;
-
-			switch (input)
-			{
-			case '1':
-				menu1.Display_menu();
-				pressToContinue();
-				break;
-			case '2':
-				menu1.add_Category();
-				break;
-			case '3':
-				menu1.delete_Category();
-				break;
-			case '4':
-				menu1.AddItem();
-				break;
-			case '5':
-				menu1.deleteItem();
-				break;
-			case '6':
-				return;
-			default:
-				break;
-			}
-		}
-	}
-	*/
-	/*
-	void MainMenu()
-	{
-
-		while (true)
-		{
-			//system("cls");
-			cout << "\t\tFri-Chicks\n";
-			cout << "........................................\n\n";
-
-			cout << "1. Manage Menu \n2. Take Orders \n3. Billing History \n4. Total Sales \n5. Refresh Data \n6. Exit" << endl;
-			cout << "\nEnter the corresponding number: ";
-
-			char input;
-			cin >> input;
-
-			switch (input)
-			{
-			case '1':
-				MenuManager();
-				break;
-			case '2':
-				TakeOrder();
-				break;
-			case '3':
-				BillingHistory();
-				break;
-			case '4':
-				View_Total_Sales();
-				break;
-			case '5':
-				refreshData();
-				break;
-			case '6':
-				delete menu1.get_CategoriesList();
-				return;
-			default:
-				break;
-			}
-		}
-	}
-	*/
-
-	void pressToContinue()
-	{
-		cout << "\n\nPress any key to continue...\n\n";
-		cin.ignore();
 	}
 };
