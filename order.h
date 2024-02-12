@@ -7,6 +7,9 @@
 #include "productsList.h"
 #include "msclr/marshal_cppstd.h"
 
+#include <sstream> 
+#include <iomanip>
+#include <vector>
 using namespace std;
 using namespace System;
 
@@ -16,28 +19,31 @@ private:
 	string customerName;
 	int invoiceNumber;
 	ProductsList* PurchasedItems;
+	vector<double> quantities;
 	double bill;
 	int totalItems;
 	string dateTime;
 
 public:
-	Order(string customerName, int inv, double bill, ProductsList* PurchasedItems)
+	Order(string customerName, int inv, double bill, ProductsList* PurchasedItems, vector<double> quantities)
 	{
 		this->customerName = customerName;
 		this->invoiceNumber = inv;
 		this->bill = bill;
 		this->PurchasedItems = PurchasedItems;
 		this->totalItems = PurchasedItems->getSize();
+		this->quantities = quantities;
 		this->dateTime = getCurrentDateTime();
 	}
 
-	Order(string customerName, int inv, double bill, int totalItems, ProductsList* PurchasedItems, string dateTime)
+	Order(string customerName, int inv, double bill, int totalItems, ProductsList* PurchasedItems, string dateTime, vector<double> quantities)
 	{
 		this->customerName = customerName;
 		this->invoiceNumber = inv;
 		this->bill = bill;
 		this->PurchasedItems = PurchasedItems;
 		this->totalItems = totalItems;
+		this->quantities = quantities;
 		this->dateTime = dateTime;
 	}
 
@@ -50,6 +56,10 @@ public:
 		strftime(buffer, sizeof(buffer), "%m-%d-%Y %H:%M", &timeinfo);
 		ss << buffer;
 		return ss.str();
+	}
+	vector<double> get_Quantities()
+	{
+		return this->quantities;
 	}
 	string getCustomerName() const
 	{
