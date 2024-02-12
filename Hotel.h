@@ -35,6 +35,7 @@ public:
 			Order currentOrder = orderStack.top();
 			orderStack.pop();
 		}
+		quantities.clear();
 	}
 
 	Hotel(string name)
@@ -256,14 +257,14 @@ public:
 	{
 		Node<Product>* temp = cart->getHead();
 		double bill = 0;
-		int i = quantities.size()+1;
+		int i = 0;
 		while (temp != nullptr)
 		{	
 			bill += temp->getData().getProduct_price()*quantities[i];
 			temp = temp->getNextPtr();
-			i--;
+			i++;
 		}
-		i = 0;
+		
 		return bill;
 	}
 
