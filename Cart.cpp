@@ -15,6 +15,7 @@ namespace billingSystemGUI
 		label3->Text = "Rs. 0";
 		customerName = "N/A";
 		label5->Text = customerName;
+		hotel->emptyCart(); //clear previous data
 	}
 
 	System::Void Cart::button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -64,6 +65,7 @@ namespace billingSystemGUI
 	}
 
 	System::Void Cart::button6_Click(System::Object^ sender, System::EventArgs^ e) {
+		hotel->emptyCart();
 		this->Close();
 	}
 	System::Void Cart::listView1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {

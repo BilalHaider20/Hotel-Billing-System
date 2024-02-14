@@ -158,7 +158,7 @@ public:
 		Node<ProductsList*>* curr = head;
 		while (curr != nullptr)
 		{
-			output += curr->getData()->print();
+			output += curr->getData()->generateOutput();
 			curr = curr->getNextPtr();
 		}
 		return output;

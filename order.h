@@ -31,7 +31,7 @@ public:
 		this->invoiceNumber = inv;
 		this->bill = bill;
 		this->PurchasedItems = PurchasedItems;
-		this->totalItems = PurchasedItems->getSize();
+		this->totalItems = get_Quantities_size();
 		this->quantities = quantities;
 		this->dateTime = getCurrentDateTime();
 	}
@@ -48,10 +48,12 @@ public:
 	}
 
 
-	string getCurrentDateTime() {
-		auto now = chrono::system_clock::to_time_t(chrono::system_clock::now());
-		stringstream ss;
-		tm timeinfo = *localtime(&now);
+
+	std::string getCurrentDateTime() {
+		auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+		std::stringstream ss;
+		tm timeinfo;
+		localtime_s(&timeinfo, &now); // Use localtime_s instead of localtime
 		char buffer[80];
 		strftime(buffer, sizeof(buffer), "%m-%d-%Y %H:%M", &timeinfo);
 		ss << buffer;
@@ -64,6 +66,13 @@ public:
 	string getCustomerName() const
 	{
 		return customerName;
+	}
+	int get_Quantities_size()
+	{
+		int sum = 0;
+		for (double i : quantities)
+			sum = sum + static_cast<int>(i);
+		return sum;
 	}
 
 	int getInvoiceNumber() const
@@ -83,7 +92,7 @@ public:
 
 	int getTotalItems() const
 	{
-		return totalItems;
+		return this->totalItems;
 	}
 
 	string getDateTime() const
@@ -96,15 +105,18 @@ public:
 		String^ Bill = getBill().ToString();
 		string bill = msclr::interop::marshal_as<string>(Bill);
 		string output;
-		//output = "\r\n------------------------------------------------------------------\r\n";
-		output += "\r\n  Invoice Number: " + to_string(getInvoiceNumber()) + "\r\n";
+		output = "\r\n------------------------------------------------------------------\r\n";
 		output += "  Customer Name: " + getCustomerName() + "\r\n";
+		output += "\r\n  Invoice Number: " + to_string(getInvoiceNumber()) + "\r\n";
 		output += "  Date and Time: " + dateTime + "\r\n\r\n";
 		output += "  Items Purchased:\r\n";
 		for (int i = 1; i <= PurchasedItems->getSize(); i++) {
-			output += PurchasedItems->getProduct(i).getProduct_name() + "\r\n";
+			int quantityIndex = i - 1; 
+			output += " " + to_string(i) + "-";
+			output += " " + PurchasedItems->getProduct(i).getProduct_name() + "   ";
+			output += to_string(quantities[quantityIndex]) + "\r\n";
 		}
-		output += "\r\n  Total Items: " + to_string(getTotalItems()) + "\r\n";
+		output += "\r\n  Total Items: " + to_string(this->get_Quantities_size()) + "\r\n";
 		output += "  Total Bill: Rs. " + bill + "\r\n\r\n";
 		output += " ----------------------------------------------------------------\r\n";
 		return output;

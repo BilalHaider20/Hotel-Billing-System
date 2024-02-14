@@ -1,7 +1,6 @@
-#ifndef PRODUCTSLIST_H
-#define PRODUCTSLIST_H
-
-#include <iostream>
+#ifndef PRODUCTSLIST_H_INCLUDED
+#define PRODUCTSLIST_H_INCLUDED
+//#include <iostream>
 #include <iomanip>
 #include <cstring>
 #include "Node.h"
@@ -134,7 +133,7 @@ public:
 
 		if (ind == 1)
 		{
-			Node<Product>* current = head;
+			Node<Product>* current = this->head;
 			head = head->getNextPtr();
 			delete current;
 			size--;
@@ -143,7 +142,7 @@ public:
 			return true;
 		}
 
-		Node<Product>* current = head;
+		Node<Product>* current = this->head;
 		Node<Product>* previous;
 
 		for (int i = 1; i < ind; i++)
@@ -159,17 +158,17 @@ public:
 		return true;
 	}
 
-	string print()
+	string generateOutput()
 	{
 		Node<Product>* curr = head;
 
 
 
-		string output;
+		string output="";
 		output = "\r\n---------------------------------------------------\r\n "
 			+ category + "\r\n---------------------------------------------------\r\n";
-		output + "Sr.     " + "Product Name                  " + "Price\r\n";
-		output + "---------------------------------------------------\r\n";
+		output += "Sr.      Product Name                   Price\r\n";
+		output += "---------------------------------------------------\r\n";
 
 		int i = 1;
 		while (curr != nullptr)
@@ -181,7 +180,7 @@ public:
 			i++;
 		}
 
-		output + "\r\n\r\n\r\n";
+		output += "\r\n\r\n\r\n";
 		return output;
 	}
 };

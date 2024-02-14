@@ -106,7 +106,7 @@ namespace billingSystemGUI {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(41, 18);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(129, 22);
+			this->label1->Size = System::Drawing::Size(157, 26);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"Billing History: ";
 			// 
@@ -122,10 +122,10 @@ namespace billingSystemGUI {
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->ReadOnly = true;
+			this->textBox1->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox1->Size = System::Drawing::Size(352, 301);
 			this->textBox1->TabIndex = 5;
-			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// label2
 			// 
